@@ -1,0 +1,7 @@
+# служебное, не для публикации
+.DS_Store
+.claude/
+dev/comments.json
+dev/comments.tmp
+__pycache__/
+dev/backups/

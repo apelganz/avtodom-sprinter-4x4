@@ -16,14 +16,14 @@
   #dcm-bar { position: fixed; left: 16px; bottom: 16px; z-index: 2147483000; display: flex; gap: 6px; }
   #dcm-bar button { border: 0; cursor: pointer; height: 40px; min-width: 40px; padding: 0 14px; border-radius: 999px;
     background: #2a2a2a; color: #fff; font-size: 14px; font-weight: 600; }
-  #dcm-bar button.on { background: #02FFE0; }
+  #dcm-bar button.on { background: #18FF64; }
   #dcm-hl { position: fixed; z-index: 2147482990; pointer-events: none; display: none;
-    background: rgba(2,255,224,.10); outline: 2px dashed #02FFE0; outline-offset: -1px; border-radius: 4px; }
+    background: rgba(24, 255, 100,.10); outline: 2px dashed #18FF64; outline-offset: -1px; border-radius: 4px; }
   #dcm-tag { position: fixed; z-index: 2147482991; pointer-events: none; display: none; padding: 2px 6px; border-radius: 4px;
-    background: #02FFE0; color: #fff; font-size: 11px; white-space: nowrap; max-width: 60vw; overflow: hidden; text-overflow: ellipsis; }
+    background: #18FF64; color: #fff; font-size: 11px; white-space: nowrap; max-width: 60vw; overflow: hidden; text-overflow: ellipsis; }
   #dcm-pins { position: absolute; left: 0; top: 0; width: 0; height: 0; z-index: 2147482980; }
   .dcm-pin { position: absolute; width: 26px; height: 26px; border-radius: 999px 999px 999px 4px; border: 0; cursor: pointer;
-    background: #02FFE0; color: #fff; font-size: 12px; font-weight: 700; padding: 0; }
+    background: #18FF64; color: #fff; font-size: 12px; font-weight: 700; padding: 0; }
   .dcm-pin.done { background: #555; }
   #dcm-pop { position: fixed; z-index: 2147483001; width: min(340px, calc(100vw - 32px)); padding: 12px; border-radius: 12px;
     background: #1c1c1c; color: #eee; display: none; }
@@ -33,7 +33,7 @@
   #dcm-pop .row { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; }
   #dcm-pop button, #dcm-panel button { border: 0; cursor: pointer; border-radius: 8px; padding: 7px 12px; font-size: 13px;
     background: #2f2f2f; color: #fff; }
-  #dcm-pop button.primary { background: #02FFE0; }
+  #dcm-pop button.primary { background: #18FF64; }
   #dcm-pop .sp { flex: 1; }
   #dcm-panel { position: fixed; left: 16px; bottom: 64px; z-index: 2147483000; width: min(380px, calc(100vw - 32px));
     max-height: 70vh; overflow: auto; border-radius: 12px; background: #1c1c1c; color: #eee; padding: 12px; display: none; }
@@ -41,11 +41,11 @@
   #dcm-panel .head label { margin-left: auto; display: flex; gap: 4px; align-items: center; cursor: pointer; }
   #dcm-panel .it { padding: 8px; border-radius: 8px; background: #252525; margin-bottom: 6px; cursor: pointer; font-size: 13px; line-height: 1.4; }
   #dcm-panel .it.done { opacity: .5; }
-  #dcm-panel .it b { color: #02FFE0; margin-right: 6px; }
+  #dcm-panel .it b { color: #18FF64; margin-right: 6px; }
   #dcm-panel .it small { display: block; color: #888; margin-top: 2px; }
   #dcm-panel .empty { font-size: 13px; color: #888; padding: 8px 0; }
   .dcm-flash { animation: dcmflash 1.2s ease 2; }
-  @keyframes dcmflash { 50% { outline: 3px solid #02FFE0; outline-offset: 2px; } }
+  @keyframes dcmflash { 50% { outline: 3px solid #18FF64; outline-offset: 2px; } }
   body.dcm-mode, body.dcm-mode * { cursor: crosshair !important; }
   body.dcm-mode #dcm, body.dcm-mode #dcm * { cursor: auto !important; }
   body.dcm-mode #dcm button { cursor: pointer !important; }

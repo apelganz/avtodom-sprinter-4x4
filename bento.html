@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Автодом Sprinter 4×4 · бенто</title>
+<link rel="icon" type="image/svg+xml" href="assets/logo/favicon.svg">
+<link rel="stylesheet" href="bento.css">
+</head>
+<body>
+<!--
+  Экспериментальная главная в бенто-сетке. Основной сайт — index.html, он не меняется.
+  Холст — одна сетка на 4 колонки, модуль квадратный. «Экран» = два ряда модулей.
+  У каждой плитки: --c колонка, --r ряд, --w × --h размер в модулях.
+  Доминанта экрана по порядку: во всю ширину → слева → справа → по центру → …
+-->
+<div class="bento-shell"><main class="bento-wrap"><div class="bento-grid">
+
+  <!-- ЭКРАН 1 · доминанта во всю ширину (4×2), общий план -->
+  <section class="bento-tile t-photo" style="--c:1; --r:1; --w:4; --h:2; --mw:2; --mh:2" aria-label="Обложка">
+    <img src="assets/img/hero-pereval.jpg" alt="Автодом на базе Sprinter 4×4 на перевале над облаками в сумерках: выдвинута маркиза, на крыше солнечные панели">
+    <div class="bento-plate" style="width: min(640px, calc(100% - 32px))">
+      <p class="bento-eyebrow">Концепт · автодом на двоих</p>
+      <h1 class="bento-h1">Sprinter <i>4×4</i></h1>
+      <p class="bento-p">Полностью автономный дом на двоих для долгих путешествий — в том числе по бездорожью и вдали от кемпингов.</p>
+    </div>
+  </section>
+
+  <!-- ЭКРАН 2 · доминанта слева (2×2) -->
+  <figure class="bento-tile t-photo" style="--c:1; --r:3; --w:2; --h:2; margin:0">
+    <img src="assets/img/exterier-lug.jpg" alt="Автодом сбоку на альпийском лугу в золотой час: открыта сдвижная дверь, выдвинута маркиза, стол и стулья" loading="lazy">
+    <figcaption class="bento-chip">Маркиза 3,5–4 м · по правому борту над сдвижной дверью</figcaption>
+  </figure>
+  <div class="bento-tile t-fact t-panel" style="--c:3; --r:3">
+    <p class="bento-eyebrow">Коротко о машине</p>
+    <div><p class="bento-num">4×4</p><p class="bento-fact-cap">Полный привод, дизель, автомат</p></div>
+  </div>
+  <div class="bento-tile t-fact t-accent" style="--c:4; --r:3">
+    <span></span>
+    <div><p class="bento-num">≈7 м</p><p class="bento-fact-cap">Длинная база L3, высокая крыша</p></div>
+  </div>
+  <div class="bento-tile t-text" style="--c:3; --r:4; --w:2">
+    <p class="bento-eyebrow">Экстерьер</p>
+    <h2 class="bento-h">Снаружи ничего лишнего</h2>
+    <p class="bento-p">Сдержанный премиальный экспедиционный фургон без пластиковых надстроек. Матовый светлый кузов — песочный или серый.</p>
+  </div>
+
+  <!-- ЭКРАН 3 · доминанта справа (2×2), рядом макро-деталь -->
+  <div class="bento-tile t-text t-row" style="--c:1; --r:5; --w:2">
+    <p class="bento-eyebrow">Стиль и материалы</p>
+    <h2 class="bento-h">Ни одного острого угла</h2>
+    <p class="bento-p">Премиальный и технологичный интерьер в духе яхты или бизнес-джета: мягкие скруглённые формы, светлые матовые поверхности, металл, тёплый линейный свет.</p>
+  </div>
+  <div class="bento-tile t-photo" style="--c:1; --r:6">
+    <img src="assets/img/materialy-makro.webp" alt="Матовый фасад, алюминиевая кромка и кварцевая столешница крупным планом" loading="lazy">
+  </div>
+  <div class="bento-tile t-text" style="--c:2; --r:6">
+    <p class="bento-eyebrow">Формы</p>
+    <p class="bento-p" style="margin-top:0">Без острых углов: большие радиусы на мебели, изогнутые фасады шкафов, плавный переход стен в потолок, скруглённые окна и дверь санузла.</p>
+  </div>
+  <div class="bento-tile t-photo" style="--c:3; --r:5; --w:2; --h:2">
+    <img src="assets/img/salon-dnem.jpg" alt="Салон: скруглённые матовые фасады, серый диван вдоль борта, кухня напротив, линейная подсветка в потолке" loading="lazy">
+  </div>
+
+  <!-- ЭКРАН 4 · доминанта по центру (2×2) -->
+  <div class="bento-tile t-text t-panel" style="--c:1; --r:7; --h:2">
+    <p class="bento-eyebrow">Кухня</p>
+    <h2 class="bento-h">Готовить без электричества</h2>
+    <p class="bento-p">Кухня вдоль правого борта у сдвижной двери, напротив дивана. Работает на газу — значит, работает везде.</p>
+    <div class="bento-push" style="padding-top:18px">
+      <p class="bento-h3">Плита</p>
+      <p class="bento-note">Газовая варочная панель на 2 конфорки под стеклянной крышкой.</p>
+    </div>
+  </div>
+  <div class="bento-tile t-photo" style="--c:2; --r:7; --w:2; --h:2">
+    <img src="assets/img/kuhnya.jpg" alt="Кухонный блок с газовой панелью и мойкой, напротив — диван; в окнах горное озеро" loading="lazy">
+  </div>
+  <div class="bento-tile t-fact" style="--c:4; --r:7">
+    <span></span>
+    <div><p class="bento-num">2 + 2</p><p class="bento-fact-cap">Для езды и спальные</p></div>
+  </div>
+  <div class="bento-tile t-accent" style="--c:4; --r:8" aria-hidden="true"></div>
+
+  <!-- ЭКРАН 5 · доминанта слева (2×2) -->
+  <div class="bento-tile t-photo" style="--c:1; --r:9; --w:2; --h:2">
+    <img src="assets/img/spalnya-vecherom.jpg" alt="Разложенная кровать и тёплая подсветка вечером" loading="lazy">
+  </div>
+  <div class="bento-tile t-text t-row" style="--c:3; --r:9; --w:2">
+    <p class="bento-eyebrow">Спальня</p>
+    <h2 class="bento-h">Гостиная днём, спальня ночью</h2>
+    <p class="bento-p">Днём это гостиная: диван вдоль левого борта, напротив — кухня, передние сиденья повёрнуты к салону. Над диваном на всю длину — навесные шкафы с подсветкой снизу.</p>
+  </div>
+  <div class="bento-tile t-text" style="--c:3; --r:10">
+    <p class="bento-eyebrow">Санузел и душ</p>
+    <p class="bento-h3">Отдельная комната, а не кабинка</p>
+    <p class="bento-note bento-push">Во всю ширину кузова в корме, глубиной около 70 см. От салона отделяет одна сплошная перегородка, дверь в ней — ровно по центру.</p>
+  </div>
+  <div class="bento-tile t-photo" style="--c:4; --r:10">
+    <img src="assets/img/sanuzel-dveri-zakryty.jpg" alt="Санузел от двери: бесшовные серые панели, изогнутая тумба с раковиной, зона душа, подвесной унитаз" loading="lazy">
+  </div>
+
+  <!-- ЭКРАН 6 · доминанта справа (2×2), макро-деталь крыши -->
+  <div class="bento-tile t-fact t-accent" style="--c:1; --r:11">
+    <p class="bento-eyebrow">Автономность</p>
+    <div><p class="bento-num sm">5–7 дней</p><p class="bento-fact-cap">Без подключения летом, 3–4 зимой</p></div>
+  </div>
+  <div class="bento-tile t-fact t-panel" style="--c:2; --r:11">
+    <span></span>
+    <div><p class="bento-num sm">400–600 Вт</p><p class="bento-fact-cap">Панели на багажнике</p></div>
+  </div>
+  <div class="bento-tile t-text" style="--c:1; --r:12; --w:2">
+    <h2 class="bento-h">Неделя без единой розетки</h2>
+    <p class="bento-p">Запас хода без подключения — 5–7 дней летом и 3–4 дня зимой. Всё состояние дома видно на iPad Air 13″, закреплённом на центральной части торпеды рядом с водителем: заряд, вода, отопление, свет.</p>
+  </div>
+  <div class="bento-tile t-photo" style="--c:3; --r:11; --w:2; --h:2">
+    <img src="assets/img/solnechnaya-krysha.webp" alt="Солнечные панели на силовом багажнике, вентиляционные люки и задняя лестница" loading="lazy">
+  </div>
+
+  <!-- ЭКРАН 7 · доминанта слева (2×2) -->
+  <figure class="bento-tile t-photo" style="--c:1; --r:13; --w:2; --h:2; margin:0">
+    <img src="assets/img/vodosnabzhenie.webp" alt="Разрез водоснабжения: чистая вода и бойлер внутри, утеплённый серый бак под полом" loading="lazy">
+    <figcaption class="bento-chip">Концепт размещения: бак чистой воды — внутри, серый бак — под полом.</figcaption>
+  </figure>
+  <div class="bento-tile t-text t-panel" style="--c:3; --r:13; --w:2">
+    <p class="bento-eyebrow">Вода</p>
+    <h2 class="bento-h">Холодная и горячая</h2>
+    <p class="bento-p">Душ, мытьё рук и посуды.</p>
+  </div>
+  <div class="bento-tile t-fact" style="--c:3; --r:14">
+    <p class="bento-eyebrow">Климат и управление</p>
+    <div><p class="bento-num sm">От −15 до +30</p></div>
+  </div>
+  <div class="bento-tile t-ph" style="--c:4; --r:14">
+    <p class="bento-h3" style="margin:0">Фото</p>
+    <p class="bento-note">Здесь — кондиционер: моноблок от спецтехники до 1,5 кВт, 12/220 В</p>
+  </div>
+
+  <!-- ЭКРАН 8 · доминанта во всю ширину (4×2), общий план кабины -->
+  <section class="bento-tile t-photo" style="--c:1; --r:15; --w:4; --h:2; --mw:2; --mh:2" aria-label="Управление">
+    <img src="assets/img/ipad-torpedo-wide-v3.webp" alt="iPad Air 13″ на центральной части торпеды рядом с водителем, вид из салона" loading="lazy">
+    <div class="bento-plate">
+      <p class="bento-eyebrow">Управление</p>
+      <h2 class="bento-h">Весь дом — на одном экране</h2>
+      <p class="bento-p">Автодомом управляет большой iPad Air 13″, закреплённый на торпеде рядом с водителем — как экран в Tesla. В нём специальное приложение, через которое управляются все системы дома.</p>
+    </div>
+  </section>
+
+  <!-- ЭКРАН 9 · доминанта по центру (2×2), макро: интерфейс -->
+  <div class="bento-tile t-text t-row" style="--c:1; --r:17; --h:2">
+    <ul class="bento-list">
+      <li><b>Кондиционер</b><span>Независимый от машины: моноблок от спецтехники до 1,5 кВт, 12/220 В, с поддержанием заданной температуры.</span></li>
+      <li><b>Отопление</b><span>Автономный дизельный фен, работает при заглушенном двигателе. Отопитель с бойлером питается от бака машины.</span></li>
+      <li><b>Вентиляция</b><span>Люки с вентиляторами в салоне и санузле.</span></li>
+      <li><b>Газ</b><span>Баллон в отдельном отсеке с вентиляцией наружу, питает плиту.</span></li>
+    </ul>
+  </div>
+  <div class="bento-tile t-photo" style="--c:2; --r:17; --w:2; --h:2">
+    <img src="assets/img/ipad-product-v3.webp" alt="Фронтальный продуктовый рендер iPad: интерфейс автодома с бирюзовыми виджетами на тёмном фоне" loading="lazy">
+  </div>
+  <div class="bento-tile t-photo" style="--c:4; --r:17">
+    <img src="assets/img/ipad-control-close.webp" alt="Экран iPad с интерфейсом управления автодомом крупным планом" loading="lazy">
+  </div>
+  <div class="bento-tile t-text t-accent" style="--c:4; --r:18">
+    <p class="bento-h3">Дашборд в телефоне</p>
+    <p class="bento-note bento-push">Все параметры — в приложении.</p>
+  </div>
+
+  <!-- ЭКРАН 10 · доминанта справа (2×2) -->
+  <div class="bento-tile t-text t-panel" style="--c:1; --r:19; --w:2">
+    <p class="bento-eyebrow">Базовая машина</p>
+    <h2 class="bento-h">Каким должен быть фургон</h2>
+    <p class="bento-p">Пожелания к донору — отдельно от конкретного Sprinter из концепта. Часть из них спорит с ним: см. открытые вопросы в части 04.</p>
+  </div>
+  <figure class="bento-tile t-photo contain" style="--c:1; --r:20; margin:0">
+    <img src="assets/img/van-sprinter.webp" alt="Mercedes-Benz Sprinter — серый фургон, вид строго сбоку" loading="lazy">
+    <figcaption class="bento-chip">Mercedes-Benz Sprinter</figcaption>
+  </figure>
+  <div class="bento-tile t-fact" style="--c:2; --r:20">
+    <p class="bento-eyebrow">Ширина внутри</p>
+    <div><p class="bento-num sm">1 787 мм</p><p class="bento-fact-cap">Поперёк не ляжешь</p></div>
+  </div>
+  <div class="bento-tile t-photo" style="--c:3; --r:19; --w:2; --h:2">
+    <img src="assets/img/donor-kuzov-night.webp" alt="Серый Sprinter в тёмном ночном боксе с искусственным освещением: открыты боковая и задние двери" loading="lazy">
+  </div>
+
+  <!-- ЭКРАН 11 · доминанта слева (2×2) -->
+  <figure class="bento-tile t-photo" style="--c:1; --r:21; --w:2; --h:2; margin:0">
+    <img src="assets/img/bagazh-velosipedy.webp" alt="Два велосипеда на выдвижных направляющих под поднятой кроватью" loading="lazy">
+    <figcaption class="bento-chip">Вариант компоновки с багажным отсеком под кроватью.</figcaption>
+  </figure>
+  <div class="bento-tile t-text" style="--c:3; --r:21; --w:2">
+    <p class="bento-eyebrow">Хранение</p>
+    <h2 class="bento-h">Где что живёт</h2>
+    <p class="bento-p">Хранение не сводится к одному большому отсеку. У каждой вещи своё место по длине кузова.</p>
+  </div>
+  <div class="bento-tile t-photo" style="--c:3; --r:22">
+    <img src="assets/img/detali-sborka.webp" alt="Панели, алюминиевый профиль, напечатанные соединители и крепёж перед сборкой" loading="lazy">
+  </div>
+  <div class="bento-tile t-text t-row" style="--c:4; --r:22">
+    <p class="bento-eyebrow">Безопасность</p>
+    <ul class="bento-bul">
+      <li>Механические блокираторы всех дверей изнутри</li>
+      <li>Блокиратор рулевого вала на стоянке</li>
+      <li>Сейф, прикрученный к кузову</li>
+      <li>Шторы на всех окнах — снаружи ничего не видно</li>
+    </ul>
+  </div>
+
+  <!-- ЭКРАН 12 · доминанта по центру (2×2), макро: модуль в разборе -->
+  <div class="bento-tile t-text t-panel" style="--c:1; --r:23; --h:2">
+    <p class="bento-eyebrow">Часть 2 · продукт</p>
+    <h2 class="bento-h">Не один автодом, а конструктор</h2>
+    <p class="bento-p">Мы проектируем внутренности автодома как продукт — по принципу дизайн-системы в коде. Есть общие основы, из них собираются модули-компоненты, а из модулей — готовые компоновки под разные фургоны.</p>
+  </div>
+  <figure class="bento-tile t-photo" style="--c:2; --r:23; --w:2; --h:2; margin:0">
+    <img src="assets/img/modul-kuhni-razbor.webp" alt="Кухонный модуль в разборе: алюминиевый каркас, соединители, фасады и столешница" loading="lazy">
+    <figcaption class="bento-chip">Концепт модульной сборки: каркас, соединители, панели и столешница.</figcaption>
+  </figure>
+  <div class="bento-tile t-text" style="--c:4; --r:23">
+    <p class="bento-eyebrow">Один набор — разные жизни</p>
+    <p class="bento-h3">Двое в долгом путешествии</p>
+    <p class="bento-note bento-push">Полный набор: душ и туалет на борту, большой запас воды, место под технику.</p>
+  </div>
+  <div class="bento-tile t-text t-row" style="--c:4; --r:24">
+    <p class="bento-h3">Работа из фургона</p>
+    <p class="bento-note bento-push">Два сиденья со столом вместо части шкафов, кровать уходит поперёк в корму.</p>
+  </div>
+
+  <!-- ЭКРАН 13 · доминанта во всю ширину (4×2), макро: фактура печати -->
+  <section class="bento-tile t-photo" style="--c:1; --r:25; --w:4; --h:2; --mw:2; --mh:2" aria-label="Производство">
+    <img src="assets/img/styk-paneley.webp" alt="Крупный план фактуры 3D-печати и скрытого соединения панелей с профилем" loading="lazy">
+    <div class="bento-plate">
+      <p class="bento-eyebrow">Производство</p>
+      <h2 class="bento-h">Печать — это и есть отделка</h2>
+      <p class="bento-p">Никакой облицовки и покраски. Напечатанная деталь — готовая поверхность интерьера. Убираем самые долгие и дорогие этапы постройки.</p>
+    </div>
+  </section>
+
+  <!-- ЭКРАН 14 · доминанта справа (2×2), крупный заголовок на акценте -->
+  <div class="bento-tile t-text" style="--c:1; --r:27">
+    <p class="bento-h3">Туалет и душ на борту</p>
+    <p class="bento-note bento-push">Главная ценность автодома: на природе это самая большая проблема.</p>
+  </div>
+  <div class="bento-tile t-text t-row" style="--c:2; --r:27">
+    <p class="bento-h3">Доехать по бездорожью</p>
+    <p class="bento-note bento-push">Проходимость, клиренс, внедорожная резина, короткие свесы, компактные габариты.</p>
+  </div>
+  <div class="bento-tile t-text t-row" style="--c:1; --r:28">
+    <p class="bento-h3">Готовый кит-набор</p>
+    <p class="bento-note bento-push">Интерьер как конструктор: модули можно купить целиком и собрать самому под свой фургон.</p>
+  </div>
+  <div class="bento-tile t-text" style="--c:2; --r:28">
+    <p class="bento-h3">Защита от насекомых</p>
+    <p class="bento-note bento-push">Сетки на всех окнах, люке, сдвижной и задних дверях; шторы на всех окнах.</p>
+  </div>
+  <div class="bento-tile t-text t-accent" style="--c:3; --r:27; --w:2; --h:2">
+    <p class="bento-eyebrow">Ключевые задачи</p>
+    <p class="bento-h1 bento-push" style="font-size: clamp(40px, 11cqi, 120px)">Что проект обязан решить</p>
+  </div>
+
+  <!-- ЭКРАН 15 · доминанта слева (2×2), общий план, финал -->
+  <div class="bento-tile t-photo" style="--c:1; --r:29; --w:2; --h:2">
+    <img src="assets/img/sanuzel-dveri-otkryty.jpg" alt="Открытые задние двери, санузел и коврик для уличного душа" loading="lazy">
+  </div>
+  <div class="bento-tile t-text t-panel" style="--c:3; --r:29; --w:2">
+    <p class="bento-eyebrow">Концепт-визуализации</p>
+    <h2 class="bento-h">Пять кадров, которые объясняют проект</h2>
+    <p class="bento-p">Фотореалистичные концепты на природе: горы, альпийские луга, горные озёра, перевалы над облаками.</p>
+  </div>
+  <div class="bento-tile t-accent" style="--c:3; --r:30; justify-content: space-between">
+    <svg class="bento-logo" viewBox="0 0 64 64" fill="none" aria-hidden="true"><g transform="translate(32 32) rotate(45) scale(.74) translate(-32 -32)"><path d="M12 4H21Q29 4 29 12V21.42A11 11 0 0 0 21.42 29H12Q4 29 4 21V12Q4 4 12 4Z" fill="currentColor" transform="rotate(0 32 32)"/><path d="M12 4H21Q29 4 29 12V21.42A11 11 0 0 0 21.42 29H12Q4 29 4 21V12Q4 4 12 4Z" fill="currentColor" transform="rotate(90 32 32)"/><path d="M12 4H21Q29 4 29 12V21.42A11 11 0 0 0 21.42 29H12Q4 29 4 21V12Q4 4 12 4Z" fill="currentColor" transform="rotate(180 32 32)"/><path d="M12 4H21Q29 4 29 12V21.42A11 11 0 0 0 21.42 29H12Q4 29 4 21V12Q4 4 12 4Z" fill="currentColor" transform="rotate(270 32 32)"/></g><circle cx="32" cy="32" r="5" fill="var(--logo-accent, #18FF64)"/></svg>
+    <p class="bento-h3" style="margin:0">Автодом Sprinter 4×4</p>
+  </div>
+  <div class="bento-tile t-text" style="--c:4; --r:30">
+    <p class="bento-eyebrow">Открытые вопросы</p>
+    <p class="bento-h3">Где заметки расходятся с концептом</p>
+    <a class="bento-link ghost bento-push" href="index.html#voprosy">Открыть на сайте →</a>
+  </div>
+
+</div></main></div>
+
+<a class="bento-badge" href="index.html">Экспериментальная версия · основной сайт →</a>
+</body>
+</html>

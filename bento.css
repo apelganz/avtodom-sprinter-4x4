@@ -1,0 +1,162 @@
+/* Экспериментальная главная в бенто-сетке. Основной сайт (index.html) этот файл не использует.
+   Токены — те же значения, что в :root основного сайта; новых цветов, шрифтов и радиусов нет. */
+:root {
+  color-scheme: dark;
+  --ground: #08080A;
+  --panel: #0E0E12;
+  --row: #15151A;
+  --card: #16161B;
+  --control: #26262C;
+  --accent: #18FF64;
+  --ink-on-accent: #000000;
+  --text: #FFFFFF;
+  --text-2: rgba(255, 255, 255, 0.68);
+  --text-3: rgba(255, 255, 255, 0.5);
+
+  /* сетка: квадратный модуль, один радиус и один гаттер на все плитки */
+  --bento-gap: 12px;
+  --bento-pad: 24px;
+  --bento-radius: 28px;
+}
+@font-face { font-family: 'Rooftop'; src: url('assets/fonts/rooftop/Rooftop-Regular.otf') format('opentype'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Rooftop'; src: url('assets/fonts/rooftop/Rooftop-Book.otf') format('opentype'); font-weight: 450; font-display: swap; }
+@font-face { font-family: 'Rooftop'; src: url('assets/fonts/rooftop/Rooftop-Medium.otf') format('opentype'); font-weight: 500; font-display: swap; }
+@font-face { font-family: 'Rooftop'; src: url('assets/fonts/rooftop/Rooftop-Bold.otf') format('opentype'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'TT Travels Next'; src: url('assets/fonts/TTTravelsNext-Variable.woff2') format('woff2'); font-weight: 100 900; font-display: swap; }
+
+* { box-sizing: border-box; }
+html, body { overflow-x: hidden; }
+body {
+  margin: 0; background: var(--ground); color: var(--text);
+  font-family: 'Rooftop', system-ui, sans-serif; -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+
+/* ── Холст ─────────────────────────────────────────────
+   Ширина холста ограничена так, чтобы два ряда модулей (один «экран»)
+   помещались в высоту окна. Модуль = ширина колонки, ряды той же высоты. */
+.bento-wrap {
+  container-type: inline-size;
+  width: 100%;
+  max-width: calc(2 * (100svh - 2 * var(--bento-pad) - var(--bento-gap)) + 3 * var(--bento-gap));
+  min-width: 0;
+  margin: 0 auto;
+  padding: var(--bento-pad) 0;
+}
+.bento-grid {
+  --cols: 4;
+  --m: calc((100cqw - (var(--cols) - 1) * var(--bento-gap)) / var(--cols));
+  display: grid;
+  grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
+  grid-auto-rows: minmax(var(--m), auto);
+  gap: var(--bento-gap);
+}
+.bento-shell { padding: 0 var(--bento-pad); }
+
+/* Плитка: место задаётся переменными --c (колонка), --r (ряд), --w, --h (размер в модулях). */
+.bento-tile {
+  grid-column: var(--c) / span var(--w, 1);
+  grid-row: var(--r) / span var(--h, 1);
+  position: relative; overflow: hidden; min-width: 0;
+  container-type: inline-size;
+  border-radius: var(--bento-radius);
+  background: var(--card);
+  display: flex; flex-direction: column;
+  padding: clamp(18px, 7cqi, 32px);
+}
+
+/* фон плиток — только токены */
+.t-panel { background: var(--panel); }
+.t-row { background: var(--row); }
+.t-control { background: var(--control); }
+.t-accent { background: var(--accent); color: var(--ink-on-accent); }
+.t-accent .bento-eyebrow, .t-accent .bento-p, .t-accent .bento-note { color: var(--ink-on-accent); }
+
+/* фото на всю плитку */
+.t-photo { padding: 0; background: var(--row); }
+.t-photo > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.t-photo.contain > img { object-fit: contain; padding: 8%; }
+.bento-chip {
+  position: absolute; left: 16px; bottom: 16px; max-width: calc(100% - 32px);
+  padding: 8px 14px; border-radius: 999px;
+  background: rgba(8, 8, 10, 0.72); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+  font-size: 13px; line-height: 1.35; color: var(--text);
+}
+.bento-plate {
+  position: absolute; left: 16px; bottom: 16px; width: min(460px, calc(100% - 32px));
+  padding: clamp(18px, 3cqi, 28px); border-radius: 20px;
+  background: rgba(8, 8, 10, 0.72); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px);
+}
+
+/* плейсхолдер вместо фото */
+.t-ph { background: var(--row); justify-content: center; align-items: center; text-align: center; gap: 10px; }
+.t-ph::before {
+  content: ""; width: 44px; height: 44px; border-radius: 12px; background: var(--control);
+}
+
+/* ── Типографика ── */
+.bento-eyebrow {
+  margin: 0 0 14px; font-size: 12px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--accent);
+}
+.bento-h {
+  margin: 0; font-family: 'TT Travels Next', sans-serif; font-weight: 600;
+  font-size: clamp(22px, 8cqi, 56px); line-height: 1.02; letter-spacing: -0.025em;
+}
+.bento-h1 {
+  margin: 0; font-family: 'TT Travels Next', sans-serif; font-weight: 600;
+  font-size: clamp(40px, 6.6cqi, 104px); line-height: .95; letter-spacing: -0.035em;
+}
+.bento-h1 i { font-style: normal; color: var(--accent); }
+.bento-h3 { margin: 0 0 8px; font-family: 'TT Travels Next', sans-serif; font-weight: 600; font-size: clamp(17px, 6.5cqi, 24px); line-height: 1.15; letter-spacing: -0.015em; }
+.bento-p { margin: 14px 0 0; font-size: clamp(14px, 4.4cqi, 17px); line-height: 1.5; color: var(--text-2); max-width: 52ch; }
+.bento-note { margin: 0; font-size: 13px; line-height: 1.45; color: var(--text-3); }
+.bento-push { margin-top: auto; }
+
+/* «немая» плитка с одной крупной цифрой */
+.t-fact { justify-content: space-between; }
+.bento-num {
+  margin: 0; font-family: 'TT Travels Next', sans-serif; font-weight: 600;
+  font-size: clamp(36px, 24cqi, 120px); line-height: .95; letter-spacing: -0.035em;
+  font-variant-numeric: tabular-nums; white-space: nowrap;
+}
+.bento-num.sm { font-size: clamp(28px, 14cqi, 68px); white-space: normal; text-wrap: balance; }
+.bento-fact-cap { margin: 0; font-size: clamp(13px, 4.6cqi, 17px); line-height: 1.4; color: var(--text-2); }
+.t-accent .bento-fact-cap { color: var(--ink-on-accent); }
+
+.bento-list { margin: 0; padding: 0; list-style: none; display: grid; gap: 12px; }
+.bento-list b { display: block; font-weight: 500; font-size: 15px; color: var(--text); }
+.bento-list span { display: block; margin-top: 2px; font-size: 14px; line-height: 1.45; color: var(--text-2); }
+.bento-bul { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; font-size: 14px; line-height: 1.4; color: var(--text-2); }
+.bento-bul li { position: relative; padding-left: 16px; }
+.bento-bul li::before { content: ""; position: absolute; left: 0; top: .55em; width: 6px; height: 6px; border-radius: 999px; background: var(--accent); }
+
+.bento-logo { width: clamp(48px, 30cqi, 120px); height: auto; color: var(--ink-on-accent); --logo-accent: var(--ink-on-accent); }
+.bento-link {
+  display: inline-flex; align-self: flex-start; align-items: center; gap: 8px;
+  margin-top: 18px; padding: 10px 18px; border-radius: 999px;
+  background: var(--ink-on-accent); color: var(--accent); text-decoration: none; font-weight: 500; font-size: 14px;
+}
+.bento-link.ghost { background: var(--control); color: var(--text); }
+
+/* маленькая плашка «экспериментальная версия» */
+.bento-badge {
+  position: fixed; right: 16px; bottom: 16px; z-index: 10;
+  padding: 10px 16px; border-radius: 999px; background: var(--control);
+  font-size: 13px; color: var(--text); text-decoration: none;
+}
+.bento-badge:hover { background: var(--accent); color: var(--ink-on-accent); }
+
+/* ── Узкие экраны: 2 колонки, плитки укладываются по порядку ──
+   Бенто задумано для десктопа; здесь — только чтобы ничего не ломалось. */
+@media (max-width: 899px) {
+  :root { --bento-pad: 16px; }
+  .bento-wrap { max-width: none; }
+  .bento-grid { --cols: 2; grid-auto-flow: row dense; }
+  .bento-tile {
+    grid-column: auto / span var(--mw, var(--w, 1));
+    grid-row: auto / span var(--mh, var(--h, 1));
+  }
+  .t-text { --mw: 2; --mh: 1; }
+}

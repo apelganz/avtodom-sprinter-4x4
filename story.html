@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Автодом Sprinter 4×4 · история</title>
+<link rel="icon" type="image/svg+xml" href="assets/logo/favicon.svg">
+<link rel="stylesheet" href="story.css">
+<link rel="stylesheet" href="story-schemes.css">
+</head>
+<body>
+<!--
+  Экспериментальная страница: 3 сцены с закреплённым автодомом и 2 редакторских разворота между ними.
+  Основной сайт — index.html, он не меняется.
+
+  Сцена:   <section class="story-scene" data-steps="N">
+             .story-stage — состояния машины (.story-state[data-step]) и узлы (.story-node[data-step]),
+             .story-layer[data-step][data-zoom="масштаб x% y%"] — тексты и плашки шага.
+  Картинки: <figure class="story-img" data-id="ID"> → assets/story/ID.webp. Нет файла — плейсхолдер.
+  Список картинок и промпты — story-assets.json / story-assets.md.
+-->
+
+<button type="button" class="story-theme" aria-label="Переключить на светлую тему" title="Светлая / тёмная тема"><svg class="i-sun" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M120,40V16a8,8,0,0,1,16,0V40a8,8,0,0,1-16,0Zm8,24a64,64,0,1,0,64,64A64.07,64.07,0,0,0,128,64ZM58.34,69.66A8,8,0,0,0,69.66,58.34l-16-16A8,8,0,0,0,42.34,53.66Zm0,116.68-16,16a8,8,0,0,0,11.32,11.32l16-16a8,8,0,0,0-11.32-11.32ZM192,72a8,8,0,0,0,5.66-2.34l16-16a8,8,0,0,0-11.32-11.32l-16,16A8,8,0,0,0,192,72Zm5.66,114.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32-11.32ZM48,128a8,8,0,0,0-8-8H16a8,8,0,0,0,0,16H40A8,8,0,0,0,48,128Zm80,80a8,8,0,0,0-8,8v24a8,8,0,0,0,16,0V216A8,8,0,0,0,128,208Zm112-88H216a8,8,0,0,0,0,16h24a8,8,0,0,0,0-16Z"/></svg><svg class="i-moon" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M235.54,150.21a104.84,104.84,0,0,1-37,52.91A104,104,0,0,1,32,120,103.09,103.09,0,0,1,52.88,57.48a104.84,104.84,0,0,1,52.91-37,8,8,0,0,1,10,10,88.08,88.08,0,0,0,109.8,109.8,8,8,0,0,1,10,10Z"/></svg></button>
+<script>try { if (localStorage.getItem('story-theme') === 'light') document.documentElement.dataset.theme = 'light'; } catch (e) {}</script>
+
+<!-- ═════════════ СЦЕНА 1 · СНАРУЖИ ═════════════
+     Машина вращается при скролле: серия из 18 кадров scene1-turn-010, 030 … 350 (шаг 20°).
+     У каждого шага data-angle — ракурс, на котором машина «останавливается», пока видна плашка;
+     между шагами кадры плавно доворачиваются. data-angle-start / data-angle-end — ракурс до первого и после последнего шага. -->
+<section class="story-scene" id="scene1" data-steps="4" data-angle-start="10" data-angle-end="210" style="height: 560svh">
+  <div class="story-pin">
+    <div class="story-frame"><div class="story-drive"><div class="story-stage">
+      <figure class="story-img alpha story-seq" data-seq="scene1-turn" data-deg-step="20" data-deg-offset="10"><img alt="Автодом Sprinter 4×4 поворачивается вокруг своей оси"><figcaption class="story-fallback"><b>scene1-turn-000</b></figcaption></figure>
+      <figure class="story-img alpha story-state" data-step="2" data-id="scene1-rv-awning"><img src="assets/story/scene1-rv-awning.webp" alt="Борт с выдвинутой маркизой, стол и стулья" loading="lazy"><figcaption class="story-fallback"><b>scene1-rv-awning</b></figcaption></figure>
+      <i class="story-node" data-step="1" style="left: 45%; top: 72%"></i>
+      <i class="story-node" data-step="2" style="left: 50%; top: 34%"></i>
+      <i class="story-node" data-step="3" style="left: 17%; top: 52%"></i>
+      <i class="story-node" data-step="3" style="left: 45%; top: 13%"></i>
+    </div></div></div>
+
+    <!-- шаг 0 · 30°: обложка; заголовок перекрывает машину, остальной текст — на плашке -->
+    <div class="story-layer" data-step="0" data-angle="30" data-zoom="1 0% 0%">
+      <h1 class="story-display in-d" style="left: var(--story-pad); top: clamp(48px, 9svh, 110px)">Sprinter <i>4×4</i></h1>
+      <div class="story-plate glass in-u d2" style="left: var(--story-pad); bottom: clamp(40px, 7svh, 96px); max-width: 460px">
+        <p class="story-eyebrow">Концепт · автодом на двоих</p>
+        <p class="story-slogan" style="margin: 0">Для свободных душой</p>
+        <p class="story-p">Полностью автономный дом на двоих для долгих путешествий — в том числе по бездорожью и вдали от кемпингов.</p>
+      </div>
+    </div>
+
+    <!-- шаг 1 · 50°: доворот и приближение к переднему колесу -->
+    <div class="story-layer" data-step="1" data-angle="50" data-zoom="1.6 5% -20%">
+      <div class="story-plate glass in-l" style="left: var(--story-pad); top: clamp(84px, 13svh, 140px); max-width: 520px">
+        <p class="story-eyebrow">Экстерьер</p>
+        <h2 class="story-h">Снаружи ничего лишнего</h2>
+        <p class="story-p">Сдержанный премиальный экспедиционный фургон без пластиковых надстроек. Матовый светлый кузов — песочный или серый.</p>
+      </div>
+      <div class="story-plate glass bleed-r in-r d2" style="right: 0; bottom: 18svh">
+        <p class="story-h3">Проходимость</p>
+        <p class="story-note">Чёрные диски, резина AT, увеличенный клиренс, защита картера и баков.</p>
+      </div>
+    </div>
+
+    <!-- шаг 2 · 90°: правый борт, поверх кадра 090 выезжает маркиза; крупная цифра перекрывает машину -->
+    <div class="story-layer" data-step="2" data-angle="90" data-zoom="0.94 0% 4%">
+      <p class="story-num in-u" style="right: var(--story-pad); top: clamp(70px, 10svh, 120px); z-index: 2">3,5–4 м</p>
+      <div class="story-plate acc bleed-r in-r d2" style="right: 0; bottom: 12svh">
+        <p class="story-h3">Маркиза 3,5–4 м</p>
+        <p class="story-note">По правому борту над сдвижной дверью, с LED-подсветкой. Под ней — складные стол и стулья.</p>
+      </div>
+    </div>
+
+    <!-- шаг 3 · 150°: машина развернулась кормой, чуть ближе -->
+    <div class="story-layer" data-step="3" data-angle="150" data-zoom="1.15 4% 3%">
+      <div class="story-plate bleed-l in-l" style="left: 0; bottom: 14svh">
+        <p class="story-h3">Корма</p>
+        <p class="story-note">Усиленный задний бампер с запасным колесом, лестница на крышу.</p>
+      </div>
+      <div class="story-plate glass in-d d2" style="right: calc(var(--story-pad) + 6vw); top: clamp(84px, 12svh, 130px)">
+        <p class="story-h3">Крыша</p>
+        <p class="story-note">Силовой багажник на всю длину с солнечными панелями.</p>
+      </div>
+    </div>
+
+    <div class="story-hud"><span>Сцена 01 · Снаружи</span><span class="story-deg" aria-hidden="true">10°</span><span class="bar"><i></i></span></div>
+  </div>
+</section>
+
+<!-- ═════════════ РАЗВОРОТ 1 · ИНТЕРЬЕР — бенто ═════════════
+     Сетка на 4 колонки, модуль квадратный, у плитки --c колонка, --r ряд, --w × --h размер. -->
+<section class="story-spread" id="spread1"><div class="story-bwrap"><div class="story-bgrid">
+  <figure class="story-img story-tile reveal" data-id="spread1-photo-main" style="--c:1; --r:1; --w:2; --h:2"><img src="assets/story/spread1-photo-main.webp" alt="Салон: диван вдоль борта, кухня напротив, линейный свет в потолке" loading="lazy"><figcaption class="story-fallback"><b>spread1-photo-main</b></figcaption></figure>
+  <div class="story-tile t-panel reveal" style="--c:3; --r:1; --w:2">
+    <p class="story-eyebrow">Стиль и материалы</p>
+    <h2 class="story-h">Ни одного острого угла</h2>
+    <p class="story-p">Премиальный и технологичный интерьер в духе яхты или бизнес-джета: мягкие скруглённые формы, светлые матовые поверхности, металл, тёплый линейный свет.</p>
+  </div>
+  <figure class="story-img story-tile reveal" data-id="spread1-photo-detail" style="--c:3; --r:2; --w:1; --h:1"><img src="assets/story/spread1-photo-detail.webp" alt="Матовый фасад, алюминиевая кромка и кварцевая столешница" loading="lazy"><figcaption class="story-fallback"><b>spread1-photo-detail</b></figcaption></figure>
+  <div class="story-tile reveal" style="--c:4; --r:2">
+    <p class="story-eyebrow">Формы</p>
+    <p class="story-note">Без острых углов: большие радиусы на мебели, изогнутые фасады шкафов, плавный переход стен в потолок, скруглённые окна и дверь санузла.</p>
+  </div>
+  <div class="story-tile t-row reveal" style="--c:1; --r:3; --h:2">
+    <p class="story-eyebrow">Кухня</p>
+    <h2 class="story-h">Готовить без электричества</h2>
+    <p class="story-p">Кухня вдоль правого борта у сдвижной двери, напротив дивана. Работает на газу — значит, работает везде.</p>
+  </div>
+  <figure class="story-img story-tile reveal" data-id="spread1-photo-kitchen" style="--c:2; --r:3; --w:2; --h:2"><img src="assets/story/spread1-photo-kitchen.webp" alt="Кухонный блок с газовой панелью и мойкой" loading="lazy"><figcaption class="story-fallback"><b>spread1-photo-kitchen</b></figcaption></figure>
+  <div class="story-tile t-acc reveal" style="--c:4; --r:3" aria-hidden="true"></div>
+  <div class="story-tile reveal" style="--c:4; --r:4">
+    <p class="story-h3">Плита</p>
+    <p class="story-note story-push">Газовая варочная панель на 2 конфорки под стеклянной крышкой.</p>
+  </div>
+</div></div></section>
+
+<!-- ═════════════ ХРАНЕНИЕ — интерактивные схемы с основного сайта (story-schemes.js) ═════════════ -->
+<section class="story-spread" id="schemes-storage"><div class="story-bwrap"><div class="story-bgrid">
+  <div class="story-tile story-scheme-text t-row reveal" style="--c:1">
+    <p class="story-eyebrow">Хранение</p>
+    <h2 class="story-h">Где что живёт</h2>
+    <p class="story-p">Хранение не сводится к одному большому отсеку. У каждой вещи своё место по длине кузова — выберите зону на разрезе.</p>
+  </div>
+  <div class="story-tile story-scheme reveal" style="--c:2; --w:3">
+    <div data-scheme="storage"></div>
+  </div>
+</div></div></section>
+
+<!-- ═════════════ СЦЕНА 2 · АВТОНОМНОСТЬ ═════════════ -->
+<section class="story-scene" id="scene2" data-steps="4" style="height: 520svh">
+  <div class="story-pin">
+    <div class="story-frame"><div class="story-drive"><div class="story-stage">
+      <figure class="story-img alpha story-state" data-step="0" data-id="scene2-rv-roof"><img src="assets/story/scene2-rv-roof.webp" alt="Автодом сверху: панели на силовом багажнике" loading="lazy"><figcaption class="story-fallback"><b>scene2-rv-roof</b></figcaption></figure>
+      <figure class="story-img alpha story-state" data-step="1" data-id="scene2-rv-xray-water"><img src="assets/story/scene2-rv-xray-water.webp" alt="Разрез борта: бак чистой воды, бойлер, серый бак под полом" loading="lazy"><figcaption class="story-fallback"><b>scene2-rv-xray-water</b></figcaption></figure>
+      <figure class="story-img alpha story-state" data-step="2" data-id="scene2-rv-xray-climate"><img src="assets/story/scene2-rv-xray-climate.webp" alt="Разрез борта: кондиционер, дизельный отопитель, люки" loading="lazy"><figcaption class="story-fallback"><b>scene2-rv-xray-climate</b></figcaption></figure>
+      <figure class="story-img alpha story-state" data-step="3" data-id="scene2-rv-cabin"><img src="assets/story/scene2-rv-cabin.webp" alt="Кабина: iPad на торпеде рядом с водителем" loading="lazy"><figcaption class="story-fallback"><b>scene2-rv-cabin</b></figcaption></figure>
+      <i class="story-node" data-step="0" style="left: 60%; top: 24%"></i>
+      <i class="story-node" data-step="1" style="left: 30%; top: 46%"></i>
+      <i class="story-node" data-step="1" style="left: 43%; top: 66%"></i>
+      <i class="story-node" data-step="2" style="left: 42%; top: 13%"></i>
+      <i class="story-node" data-step="2" style="left: 45%; top: 62%"></i>
+      <i class="story-node" data-step="3" style="left: 42%; top: 42%"></i>
+    </div></div></div>
+
+    <div class="story-layer" data-step="0" data-zoom="1 0% 6%">
+      <div class="story-plate glass in-l" style="left: var(--story-pad); top: clamp(70px, 10svh, 120px); max-width: 560px; z-index: 2">
+        <p class="story-eyebrow">Автономность</p>
+        <h2 class="story-h">Неделя без единой розетки</h2>
+      </div>
+      <div class="story-plate acc in-u d2" style="right: calc(var(--story-pad) + 4vw); bottom: 16svh">
+        <p class="story-num" style="font-size: clamp(44px, 4.6vw, 80px)">5–7 дней</p>
+        <p class="story-note" style="margin-top: 8px">Запас хода без подключения — 5–7 дней летом и 3–4 дня зимой.</p>
+      </div>
+      <div class="story-plate glass bleed-r in-r d3" style="right: 0; top: 22svh">
+        <p class="story-h3">400–600 Вт</p>
+        <p class="story-note">Панели на багажнике</p>
+      </div>
+    </div>
+
+    <div class="story-layer" data-step="1" data-zoom="1.12 -4% 0%">
+      <div class="story-plate glass in-l" style="left: var(--story-pad); top: clamp(84px, 13svh, 140px); max-width: 520px">
+        <p class="story-eyebrow">Вода</p>
+        <h2 class="story-h">Холодная и горячая</h2>
+        <p class="story-p">Душ, мытьё рук и посуды.</p>
+      </div>
+      <div class="story-plate glass bleed-r in-r d2" style="right: 0; bottom: 14svh">
+        <p class="story-note">Концепт размещения: бак чистой воды — внутри, серый бак — под полом.</p>
+      </div>
+    </div>
+
+    <div class="story-layer" data-step="2" data-zoom="1 0% 0%">
+      <p class="story-num in-d story-behind" style="left: var(--story-pad); top: clamp(60px, 9svh, 110px); font-size: clamp(64px, 11vw, 190px); color: var(--control)">−15…+30</p>
+      <div class="story-plate bleed-l in-l d1" style="left: 0; bottom: 12svh">
+        <p class="story-eyebrow">Климат и управление</p>
+        <p class="story-h3">Отопление</p>
+        <p class="story-note">Автономный дизельный фен, работает при заглушенном двигателе. Отопитель с бойлером питается от бака машины.</p>
+      </div>
+      <div class="story-plate glass in-d d2" style="right: calc(var(--story-pad) + 2vw); top: clamp(84px, 14svh, 150px)">
+        <p class="story-h3">Кондиционер</p>
+        <p class="story-note">Независимый от машины: моноблок от спецтехники до 1,5 кВт, 12/220 В, с поддержанием заданной температуры.</p>
+      </div>
+      <div class="story-plate in-u d3" style="right: calc(var(--story-pad) + 10vw); bottom: 10svh">
+        <p class="story-h3">Вентиляция</p>
+        <p class="story-note">Люки с вентиляторами в салоне и санузле.</p>
+      </div>
+    </div>
+
+    <div class="story-layer" data-step="3" data-zoom="1 0% 0%">
+      <div class="story-plate glass in-r" style="right: var(--story-pad); top: clamp(84px, 13svh, 140px); max-width: 520px">
+        <p class="story-eyebrow">Управление</p>
+        <h2 class="story-h">Весь дом — на одном экране</h2>
+        <p class="story-p">Автодомом управляет большой iPad Air 13″, закреплённый на торпеде рядом с водителем — как экран в Tesla. В нём специальное приложение, через которое управляются все системы дома.</p>
+      </div>
+      <div class="story-plate glass bleed-r in-u d2" style="right: 0; bottom: 9svh; max-width: calc(460px + var(--story-pad) + 48px); display: grid; grid-template-columns: 160px 1fr; gap: 16px; align-items: center">
+        <figure class="story-img" data-id="scene2-detail-panel" style="aspect-ratio: 3 / 2; border-radius: 16px"><img src="assets/story/scene2-detail-panel.webp" alt="Интерфейс управления автодомом на iPad" loading="lazy"><figcaption class="story-fallback" style="font-size: 10px; padding: 6px"><b style="font-size: 11px">scene2-detail-panel</b></figcaption></figure>
+        <div><p class="story-h3">iPad на торпеде</p><p class="story-note">Заряд, вода, отопление, свет.</p></div>
+      </div>
+    </div>
+
+    <div class="story-hud"><span>Сцена 02 · Автономность</span><span class="bar"><i></i></span></div>
+  </div>
+</section>
+
+<!-- ═════════════ АВТОНОМНОСТЬ, ВОДА, УПРАВЛЕНИЕ — интерактивные схемы с основного сайта (story-schemes.js) ═════════════ -->
+<section class="story-spread" id="schemes-energy"><div class="story-bwrap"><div class="story-bgrid">
+  <div class="story-tile story-scheme reveal" style="--c:1; --w:3">
+    <div data-scheme="energy"></div>
+  </div>
+  <div class="story-tile story-scheme-text t-panel reveal" style="--c:4">
+    <p class="story-eyebrow">Автономность</p>
+    <h2 class="story-h">Откуда берётся электричество</h2>
+    <p class="story-p">Меняйте условия и нажимайте на узлы — видно, откуда идёт заряд, куда уходит энергия и когда инвертор засыпает.</p>
+  </div>
+  <div class="story-tile story-scheme-text t-row reveal" style="--c:1">
+    <p class="story-eyebrow">Вода</p>
+    <h2 class="story-h">Холодная и горячая</h2>
+    <p class="story-p">Душ, мытьё рук и посуды. Откройте кран или включите душ — и посмотрите, как идёт вода.</p>
+  </div>
+  <div class="story-tile story-scheme reveal" style="--c:2; --w:3">
+    <div data-scheme="water"></div>
+  </div>
+  <div class="story-tile story-scheme reveal" style="--c:1; --w:3">
+    <div data-scheme="app"></div>
+  </div>
+  <div class="story-tile story-scheme-text t-panel reveal" style="--c:4">
+    <p class="story-eyebrow">Управление</p>
+    <h2 class="story-h">Весь дом — на одном экране</h2>
+    <p class="story-p">Автодомом управляет большой iPad Air 13″, закреплённый на торпеде рядом с водителем — как экран в Tesla. В нём специальное приложение, через которое управляются все системы дома. Нажмите на систему или на плитку на экране.</p>
+  </div>
+</div></div></section>
+
+<!-- ═════════════ РАЗВОРОТ 2 · ПРОИЗВОДСТВО — бенто ═════════════ -->
+<section class="story-spread" id="spread2"><div class="story-bwrap"><div class="story-bgrid">
+  <div class="story-tile t-panel reveal" style="--c:1; --r:1; --w:2">
+    <p class="story-eyebrow">Производство</p>
+    <h2 class="story-h">Печать — это и есть отделка</h2>
+    <p class="story-p">Никакой облицовки и покраски. Напечатанная деталь — готовая поверхность интерьера. Убираем самые долгие и дорогие этапы постройки.</p>
+  </div>
+  <div class="story-tile t-acc reveal" style="--c:1; --r:2">
+    <p class="story-h3">Слои как фактура</p>
+    <p class="story-note story-push">Слои печати не прячем, а превращаем в эстетику: фактура, рёбра, рисунок.</p>
+  </div>
+  <figure class="story-img story-tile reveal" data-id="spread2-photo-detail" style="--c:2; --r:2; --w:1; --h:1"><img src="assets/story/spread2-photo-detail.webp" alt="Скрытый стык шип-паз с винтом" loading="lazy"><figcaption class="story-fallback"><b>spread2-photo-detail</b></figcaption></figure>
+  <figure class="story-img story-tile reveal" data-id="spread2-photo-main" style="--c:3; --r:1; --w:2; --h:2"><img src="assets/story/spread2-photo-main.webp" alt="Фактура 3D-печати на крупной панели интерьера" loading="lazy"><figcaption class="story-fallback"><b>spread2-photo-main</b></figcaption></figure>
+  <figure class="story-img story-tile reveal" data-id="spread2-photo-module" style="--c:1; --r:3; --w:2; --h:2"><img src="assets/story/spread2-photo-module.webp" alt="Модуль кухни в разборе: каркас, соединители, панели" loading="lazy"><figcaption class="story-fallback"><b>spread2-photo-module</b></figcaption></figure>
+  <div class="story-tile t-row reveal" style="--c:3; --r:3; --w:2">
+    <ul class="story-list">
+      <li><b>Лазерная резка</b><span>Каркасы и панели модулей.</span></li>
+      <li><b>Алюминиевый профиль</b><span>Несущая основа кровати и мебели.</span></li>
+      <li><b>Стеклопластик</b><span>Крупные формы сложной геометрии, например капсула санузла.</span></li>
+    </ul>
+  </div>
+  <div class="story-tile reveal" style="--c:3; --r:4; --w:2">
+    <p class="story-p" style="margin: 0; color: var(--text)">Стандартное соединение — один из базовых атомов системы: шип-паз держит геометрию, винт фиксирует. Поэтому модуль снимается и ставится обратно без следов.</p>
+  </div>
+</div></div></section>
+
+<!-- ═════════════ ПРОИЗВОДСТВО И КОНСТРУКЦИЯ — интерактивные схемы с основного сайта (story-schemes.js) ═════════════ -->
+<section class="story-spread" id="schemes-make"><div class="story-bwrap"><div class="story-bgrid">
+  <div class="story-tile story-scheme-text t-row reveal" style="--c:1">
+    <p class="story-eyebrow">Как это собирается</p>
+    <h2 class="story-h">Путь одного модуля</h2>
+    <p class="story-p">Путь одного модуля — от файла до места в фургоне. Между шагами нет ручной подгонки: деталь выходит из станка готовой.</p>
+  </div>
+  <div class="story-tile story-scheme reveal" style="--c:2; --w:3">
+    <div data-scheme="make"></div>
+  </div>
+  <div class="story-tile story-scheme reveal" style="--c:1; --w:3">
+    <div data-scheme="joint"></div>
+  </div>
+  <div class="story-tile story-scheme-text t-panel reveal" style="--c:4">
+    <p class="story-eyebrow">Производство</p>
+    <h2 class="story-h">Стандартное соединение</h2>
+    <p class="story-p">Крупные элементы печатаются частями и соединяются тем же способом — размер детали не ограничен размером принтера.</p>
+  </div>
+  <div class="story-tile story-scheme-text t-row reveal" style="--c:1">
+    <p class="story-eyebrow">Конструкция</p>
+    <h2 class="story-h">Из чего это собрано</h2>
+    <p class="story-p">Поперечный разрез кузова. Выбирайте слой — он добавляется поверх предыдущих, от заводского металла до мебели и пола.</p>
+  </div>
+  <div class="story-tile story-scheme reveal" style="--c:2; --w:3">
+    <div data-scheme="build"></div>
+  </div>
+</div></div></section>
+
+<!-- ═════════════ СЦЕНА 3 · КОНСТРУКТОР ═════════════ -->
+<section class="story-scene" id="scene3" data-steps="5" style="height: 640svh">
+  <div class="story-pin">
+    <div class="story-frame"><div class="story-drive"><div class="story-stage">
+      <figure class="story-img alpha story-state" data-step="0" data-id="scene3-rv-xray"><img src="assets/story/scene3-rv-xray.webp" alt="Борт автодома в разрезе с контурами модулей" loading="lazy"><figcaption class="story-fallback"><b>scene3-rv-xray</b></figcaption></figure>
+      <figure class="story-img alpha story-state" data-step="1" data-id="scene3-rv-exploded"><img src="assets/story/scene3-rv-exploded.webp" alt="Модули вынуты и парят над машиной" loading="lazy"><figcaption class="story-fallback"><b>scene3-rv-exploded</b></figcaption></figure>
+      <figure class="story-img alpha story-state" data-step="2" data-id="scene3-layout-travel"><img src="assets/story/scene3-layout-travel.webp" alt="Компоновка для двоих в долгом путешествии" loading="lazy"><figcaption class="story-fallback"><b>scene3-layout-travel</b></figcaption></figure>
+      <figure class="story-img alpha story-state" data-step="3" data-id="scene3-layout-weekend"><img src="assets/story/scene3-layout-weekend.webp" alt="Компоновка для одного на выходные" loading="lazy"><figcaption class="story-fallback"><b>scene3-layout-weekend</b></figcaption></figure>
+      <figure class="story-img alpha story-state" data-step="4" data-id="scene3-layout-work"><img src="assets/story/scene3-layout-work.webp" alt="Компоновка для работы из фургона" loading="lazy"><figcaption class="story-fallback"><b>scene3-layout-work</b></figcaption></figure>
+      <i class="story-node" data-step="2" style="left: 14%; top: 50%"></i>
+      <i class="story-node" data-step="3" style="left: 20%; top: 46%"></i>
+      <i class="story-node" data-step="4" style="left: 46%; top: 50%"></i>
+    </div></div></div>
+
+    <div class="story-layer" data-step="0" data-zoom="1 0% 4%">
+      <div class="story-plate glass in-d" style="left: var(--story-pad); top: clamp(60px, 9svh, 110px); max-width: 620px; z-index: 2">
+        <p class="story-eyebrow">Часть 2 · продукт</p>
+        <h2 class="story-h">Не один автодом, а конструктор</h2>
+      </div>
+      <div class="story-plate glass bleed-r in-r d2" style="right: 0; bottom: 10svh; max-width: calc(460px + var(--story-pad) + 48px)">
+        <p class="story-note">Мы проектируем внутренности автодома как продукт — по принципу дизайн-системы в коде. Есть общие основы, из них собираются модули-компоненты, а из модулей — готовые компоновки под разные фургоны.</p>
+      </div>
+    </div>
+
+    <div class="story-layer" data-step="1" data-zoom="0.86 0% 8%">
+      <div class="story-plate glass in-l" style="left: var(--story-pad); bottom: 12svh; max-width: 460px">
+        <p class="story-eyebrow">Один набор — разные жизни</p>
+        <p class="story-p" style="color: var(--text); font-size: clamp(18px, 1.5vw, 24px); line-height: 1.4">Модули одни и те же — меняется только то, какие из них стоят в фургоне и где.</p>
+      </div>
+    </div>
+
+    <div class="story-layer" data-step="2" data-zoom="1 0% 0%">
+      <p class="story-num in-d story-behind" style="left: var(--story-pad); top: clamp(60px, 9svh, 110px); color: var(--control)">01</p>
+      <div class="story-plate acc bleed-r in-r" style="right: 0; top: 18svh">
+        <p class="story-h3">Двое в долгом путешествии</p>
+        <p class="story-note">Полный набор: душ и туалет на борту, большой запас воды, место под технику.</p>
+      </div>
+    </div>
+    <div class="story-layer" data-step="3" data-zoom="1 0% 0%">
+      <p class="story-num in-d story-behind" style="left: var(--story-pad); top: clamp(60px, 9svh, 110px); color: var(--control)">02</p>
+      <div class="story-plate bleed-l in-l" style="left: 0; bottom: 14svh">
+        <p class="story-h3">Один на выходные</p>
+        <p class="story-note">Санузел и шкаф сняты, вместо них — место под снаряжение и короткий блок кухни.</p>
+      </div>
+    </div>
+    <div class="story-layer" data-step="4" data-zoom="1 0% 0%">
+      <p class="story-num in-d story-behind" style="left: var(--story-pad); top: clamp(60px, 9svh, 110px); color: var(--control)">03</p>
+      <div class="story-plate glass bleed-r in-r" style="right: 0; bottom: 18svh">
+        <p class="story-h3">Работа из фургона</p>
+        <p class="story-note">Два сиденья со столом вместо части шкафов, кровать уходит поперёк в корму.</p>
+      </div>
+    </div>
+
+    <div class="story-hud"><span>Сцена 03 · Конструктор</span><span class="bar"><i></i></span></div>
+  </div>
+</section>
+
+<!-- ═════════════ СИСТЕМА — интерактивные схемы с основного сайта (story-schemes.js) ═════════════ -->
+<section class="story-spread" id="schemes-system"><div class="story-bwrap"><div class="story-bgrid">
+  <div class="story-tile story-scheme reveal" style="--c:1; --w:3">
+    <div data-scheme="levels"></div>
+  </div>
+  <div class="story-tile story-scheme-text t-panel reveal" style="--c:4">
+    <p class="story-eyebrow">Часть 2 · продукт</p>
+    <h2 class="story-h">Три уровня системы</h2>
+    <p class="story-p">Атомарный дизайн, перенесённый из интерфейсов в физический мир. Нажмите на уровень.</p>
+  </div>
+  <div class="story-tile story-scheme-text t-row reveal" style="--c:1">
+    <p class="story-eyebrow">Конструктор</p>
+    <h2 class="story-h">Соберите компоновку</h2>
+    <p class="story-p">Как IKEA, только для фургона: человек выбирает модули из каталога, складывает из них свою компоновку и собирает её сам. Демонстрация принципа — список модулей из брифа; размеры и правила совместимости ещё не заданы.</p>
+  </div>
+  <div class="story-tile story-scheme reveal" style="--c:2; --w:3">
+    <div data-scheme="builder"></div>
+  </div>
+  <div class="story-tile story-scheme reveal" style="--c:1; --w:3">
+    <div data-scheme="cycle"></div>
+  </div>
+  <div class="story-tile story-scheme-text t-panel reveal" style="--c:4">
+    <p class="story-eyebrow">Живой дизайн</p>
+    <h2 class="story-h">Неудобство → правка → новая версия</h2>
+    <p class="story-p">Проектируем от реальных сценариев: сон, готовка, душ, работа, хранение, стоянка в глуши, плохая погода, бездорожье. Универсальность: из одних и тех же модулей каждый собирает свою компоновку под свои задачи, фургон и привычки.</p>
+  </div>
+</div></div></section>
+
+<!-- ═════════════ ФИНАЛ ═════════════ -->
+<section class="story-outro">
+  <svg class="story-logo" viewBox="0 0 64 64" fill="none" aria-hidden="true"><g transform="translate(32 32) rotate(45) scale(.74) translate(-32 -32)"><path d="M12 4H21Q29 4 29 12V21.42A11 11 0 0 0 21.42 29H12Q4 29 4 21V12Q4 4 12 4Z" fill="currentColor" transform="rotate(0 32 32)"/><path d="M12 4H21Q29 4 29 12V21.42A11 11 0 0 0 21.42 29H12Q4 29 4 21V12Q4 4 12 4Z" fill="currentColor" transform="rotate(90 32 32)"/><path d="M12 4H21Q29 4 29 12V21.42A11 11 0 0 0 21.42 29H12Q4 29 4 21V12Q4 4 12 4Z" fill="currentColor" transform="rotate(180 32 32)"/><path d="M12 4H21Q29 4 29 12V21.42A11 11 0 0 0 21.42 29H12Q4 29 4 21V12Q4 4 12 4Z" fill="currentColor" transform="rotate(270 32 32)"/></g><circle cx="32" cy="32" r="5" fill="var(--logo-accent, #18FF64)"/></svg>
+  <p class="story-display" style="font-size: clamp(48px, 7vw, 132px)">Для свободных <i>душой</i></p>
+  <p class="story-p" style="margin: 0; max-width: 34ch; font-size: clamp(18px, 1.6vw, 26px); line-height: 1.4; color: var(--text)">Для тех, кто ценит свободу. Кто хочет быть везде — там, где можно, и там, где нельзя.</p>
+  <p class="story-eyebrow" style="margin: 8px 0 0">Автодом Sprinter 4×4</p>
+  <div class="story-links"><a href="index.html">Основной сайт</a><a href="bento.html">Бенто-версия</a><a href="story-assets.md">Список картинок</a></div>
+</section>
+
+<script src="story.js"></script>
+<script src="story-schemes.js"></script>
+</body>
+</html>

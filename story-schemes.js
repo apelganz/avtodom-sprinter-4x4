@@ -963,7 +963,7 @@
         root.innerHTML =
           '<div class="sxa-row">' +
             '<div class="sxa-hub"><svg viewBox="0 0 100 100" aria-hidden="true"><circle class="a-orbit" cx="50" cy="50" r="' + R + '"/>' + spokes + '</svg>' + nodes +
-              '<button type="button" class="a-core" data-k="sys" data-v="home" aria-label="Главный экран"><span class="a-tab"><i><img src="assets/story/ipad-ui.webp" alt="Главный экран автодома"></i></span><b>iPad Air 13″</b><small>на торпеде</small></button>' +
+              '<button type="button" class="a-core" data-k="sys" data-v="home" aria-label="Главный экран"><span class="a-tab"><i><img class="ui-day" src="assets/story/ipad-ui-day.webp" alt=""><img class="ui-night" src="assets/story/ipad-ui.webp" alt="Главный экран автодома"></i></span><b>iPad Air 13″</b><small>на торпеде</small></button>' +
             '</div>' +
             '<div class="sxa-right">' +
               '<div class="a-ipad"><div class="a-screen"><div class="a-bar"><span class="a-brand"><svg class="a-logo" viewBox="0 0 64 64" fill="none" aria-hidden="true"><g transform="translate(32 32) rotate(45) scale(.74) translate(-32 -32)"><path d="M12 4H21Q29 4 29 12V21.42A11 11 0 0 0 21.42 29H12Q4 29 4 21V12Q4 4 12 4Z" fill="currentColor" transform="rotate(0 32 32)"/><path d="M12 4H21Q29 4 29 12V21.42A11 11 0 0 0 21.42 29H12Q4 29 4 21V12Q4 4 12 4Z" fill="currentColor" transform="rotate(90 32 32)"/><path d="M12 4H21Q29 4 29 12V21.42A11 11 0 0 0 21.42 29H12Q4 29 4 21V12Q4 4 12 4Z" fill="currentColor" transform="rotate(180 32 32)"/><path d="M12 4H21Q29 4 29 12V21.42A11 11 0 0 0 21.42 29H12Q4 29 4 21V12Q4 4 12 4Z" fill="currentColor" transform="rotate(270 32 32)"/></g><circle cx="32" cy="32" r="5" fill="var(--logo-accent, #18FF64)"/></svg>Sprinter 4×4</span><button type="button" data-k="sys" data-v="home">Дом</button></div><div class="a-body"></div></div></div>' +
@@ -1014,7 +1014,7 @@
               ['sys', 'light', 'Открыть управление светом', 67.3, 69.2, 30.8, 19.5],
               ['ask', '3', 'Режим сна', 68, 88.5, 29, 6.5]
             ];
-            h = '<div class="a-dashboard"><img src="assets/story/ipad-ui.webp" alt="Главный экран Sprinter 4×4: салон, климат, энергия, вода и свет">' + homeTargets.map(function (t) {
+            h = '<div class="a-dashboard"><img class="ui-day" src="assets/story/ipad-ui-day.webp" alt=""><img class="ui-night" src="assets/story/ipad-ui.webp" alt="Главный экран Sprinter 4×4: салон, климат, энергия, вода и свет">' + homeTargets.map(function (t) {
               return '<button type="button" class="a-dashboard-hit" data-k="' + t[0] + '" data-v="' + t[1] + '" aria-label="' + esc(t[2]) + '" title="' + esc(t[2]) + '" style="left:' + t[3] + '%;top:' + t[4] + '%;width:' + t[5] + '%;height:' + t[6] + '%"></button>';
             }).join('') + '</div>';
           } else {
